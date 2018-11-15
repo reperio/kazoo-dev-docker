@@ -1,0 +1,46 @@
+version: '2.4'
+
+services:
+
+  rabbitmq:
+    image: rabbitmq:3.7.8-management
+    hostname: "rabbitmq-01"
+    environment:
+      RABBITMQ_ERLANG_COOKIE: "cookiemonster"
+      RABBITMQ_DEFAULT_USER: "rabbitmq"
+      RABBITMQ_DEFAULT_PASS: "rabbitmq"
+      RABBITMQ_DEFAULT_VHOST: "/"
+      RABBITMQ_VM_MEMORY_HIGH_WATERMARK: "0.90"
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    labels:
+      NAME: "rabbitmq-01"
+    networks:
+      amqp:
+        ipv4_address: 172.28.1.11
+
+  couchdb:
+    image: couchdb:2.2.0
+    hostname: "couchdb-01"
+    ports:
+      - "5984:5984"
+    labels:
+      NAME: "couchdb-01"
+    networks:
+      couchdb:
+        ipv4_address: 172.28.2.11
+
+networks:
+  amqp:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.28.1.0/24
+  couchdb:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.28.2.0/24
