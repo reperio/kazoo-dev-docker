@@ -18,6 +18,8 @@ sup kapps_config set_string crossbar.accounts account_realm_suffix sip.company.c
 sup kapps_config set_integer crossbar.accounts random_realm_strength 3
 sup kapps_config set_string accounts default_timezone "America/New_York"
 sup kapps_config set_string accounts default_language 'en-US'
+sup kapps_config set_json kapps_controller kapps '["acdc","blackhole","callflow","cdr","conference","crossbar","ecallmgr","fax","hangups","media_mgr","milliwatt","omnipresence","pivot","registrar","reorder","stepswitch","sysconf","tasks","teletype","trunkstore","webhooks"]'
+sup kapps_controller start_default_apps
 
 #Create initial Account
 
