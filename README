@@ -1,0 +1,5 @@
+This is a project to help developers work on the Kazoo platform: https://www.github.com/2600hz/kazoo
+
+The idea is to containerize the infrastructure required to develop against the erlang kazoo code base (and also the monster-ui javascript codebase).
+
+There is a runonce.sh that should be run once after a docker-compose up; this will complete the couchdb setup, set some kazoo defaults, and create the first account and user.
